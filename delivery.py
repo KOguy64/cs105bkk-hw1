@@ -68,7 +68,7 @@ class Order:
     def total(self) -> int:
         """Return the food cost plus the delivery fee; free delivery from free_delivery_from; 0 if empty."""
         food_cost = sum([f.cost(q) for f, q in self.lines])
-        fee = self.delivery_fee * int(food_cost < self.free_delivery_from)
+        fee = self.delivery_fee * int(food_cost < self.free_delivery_from) * int(bool(self.lines))
         return food_cost + fee
 
     def summary(self) -> list[str]:
